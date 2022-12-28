@@ -88,6 +88,28 @@ app.post("/accounts", (req, res)=>{
 //     console.log("Sucess");
 //   }
 // });
+app.get("/dealer", function(req, res){
+  //const requestedId = req.params.postId;
+
+  Dealer.find({},(err,dealer)=>{
+    //const storedTitle = _.lowerCase(post.title);
+    //console.log(dealer);
+     // dealer.forEach((dealer)=>{
+     //   console.log(dealer.name);
+     //   res.render("home", {
+     //     title: dealer.name,
+     //     content: dealer.ph_no
+     //   });
+     //
+     // });
+console.log(dealer.cylinder);
+    res.render("home", {
+    dealer :dealer,
+    cylinder: dealer.cylinder
+    });
+  });
+
+});
 app.listen(3000, function() {
   console.log("Server started on port 3000");
 });

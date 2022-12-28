@@ -1,5 +1,10 @@
 <%- include("partials/header"); -%>
     <h1>Home</h1>
 
-
+    <% for(let i=0; i < dealer.length; i++){ %>
+    <!--  //console.log(dealer[i].name);-->
+      <h1><%=dealer[i].name%></h1>
+      <p><%=dealer[i].ph_no%></p>
+      <p><%=dealer[i].cylinder.qnty%></p>
+    <% } %>
 <%- include("partials/footer"); -%>

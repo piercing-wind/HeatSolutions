@@ -1,8 +1,12 @@
+<%- include("partials/header"); -%>
 <h1>New Account</h1>
+<div class="formContainer">
+
 <form class="" action="/accounts" method="post">
   <div class="form-group">
-    <label for="name">Name</label>
-    <input class="form-control" type="text" name="dealerName">
+    <div class="col-50">
+    <label for="name"><i class="fa fa-user"></i>Name</label>
+    <input class="form-control" type="text" name="dealerName" placeholder="Enter Name">
 
     <label for="Phone">Phone Number</label>
     <input class="form-control" type="number" name="dealerPhNo">
@@ -15,8 +19,7 @@
 
     <label for="cylinder_Qnty">Cylinder Quantity</label>
     <input class="form-control" type="number" name="cylinder_Qnty">
-
-    <h2>Details about Store In charge</h2>
+      <h2>Details about Store In charge</h2>
 
     <label for="sName">SI-Name</label>
     <input class="form-control" type="text" name="si_name">
@@ -37,5 +40,9 @@
     <label for="a_Email">A-Email</label>
     <input class="form-control" type="email" name="a_Email">
   </div>
+ </div>
   <button class="btn btn-primary" type="submit" name="button">Submit</button>
 </form>
+</div>
+
+<%- include("partials/footer"); -%>

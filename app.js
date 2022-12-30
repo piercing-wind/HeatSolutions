@@ -16,14 +16,14 @@ var ObjectId = Schema.ObjectId;
 const storeIncharge = new Schema({ sName: String, sph_no: Number, sEmail : String });
 const accountant = new Schema({ name: String, a_ph_no: Number, a_Email: String });
 const cylinder = new Schema({ type : String, qnty: Number });
-const dealerSchema ={
+const dealerSchema = new Schema({
   name: String,
   ph_no: Number,
   email : String,
   storeIncharge : [storeIncharge],
   accountant : [accountant],
   cylinder : [cylinder]
-};
+});
 
 
 const Dealer = mongoose.model("Dealer", dealerSchema);
@@ -46,6 +46,30 @@ app.get("/", (req, res)=>{
 app.get("/accounts", function(req, res){
   res.render("accounts");
 });
+
+app.get("/dealer", function(req, res){
+  //const requestedId = req.params.postId;
+  Dealer.find({},(err,dealer)=>{
+    //const storedTitle = _.lowerCase(post.title);
+    //console.log(dealer);
+     // dealer.forEach((dealer)=>{
+     //   console.log(dealer.name);
+     //   res.render("home", {
+     //     title: dealer.name,
+     //     content: dealer.ph_no
+     //   });
+     //
+     // });
+    // console.log(dealer.cylinder);
+
+    res.render("home", {
+    dealer :dealer,
+    //cylinder:dealer.cylinder
+    });
+  });
+
+});
+
 
 app.post("/accounts", (req, res)=>{
   const name = req.body.dealerName;
@@ -76,7 +100,7 @@ app.post("/accounts", (req, res)=>{
     }
   });
 
-  res.redirect("/accounts");
+  res.redirect("/dealer");
 
 });
 
@@ -88,28 +112,7 @@ app.post("/accounts", (req, res)=>{
 //     console.log("Sucess");
 //   }
 // });
-app.get("/dealer", function(req, res){
-  //const requestedId = req.params.postId;
 
-  Dealer.find({},(err,dealer)=>{
-    //const storedTitle = _.lowerCase(post.title);
-    //console.log(dealer);
-     // dealer.forEach((dealer)=>{
-     //   console.log(dealer.name);
-     //   res.render("home", {
-     //     title: dealer.name,
-     //     content: dealer.ph_no
-     //   });
-     //
-     // });
-console.log(dealer.cylinder);
-    res.render("home", {
-    dealer :dealer,
-    cylinder: dealer.cylinder
-    });
-  });
-
-});
 app.listen(3000, function() {
   console.log("Server started on port 3000");
 });

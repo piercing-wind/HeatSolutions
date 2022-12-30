@@ -1,10 +1,19 @@
 <%- include("partials/header"); -%>
     <h1>Home</h1>
 
+    <table  style="width:100%">
+      <tr>
+        <th>Name</th>
+        <th>Phone No</th>
+        <th>Quantity</th>
+      </tr>
     <% for(let i=0; i < dealer.length; i++){ %>
-    <!--  //console.log(dealer[i].name);-->
-      <h1><%=dealer[i].name%></h1>
-      <p><%=dealer[i].ph_no%></p>
-      <p><%=dealer[i].cylinder.qnty%></p>
+      <tr>
+        <td><%=dealer[i].name%></td>
+        <td><%=dealer[i].ph_no%></td>
+        <td><%=dealer[i].cylinder[0].qnty%></td>
+        <td><button type="button" name="button">Show</button></td>
+      </tr>
     <% } %>
+</table>
 <%- include("partials/footer"); -%>
